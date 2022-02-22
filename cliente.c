@@ -37,7 +37,7 @@ int main(int argc, char const *argv[]){
                                                                                                                                       
                                                                                                                                       
     //Convertimos la IPv4 o IPv6 de texto a binario para ser procesada                                                                
-    if(inet_pton(AF_INET,"10.0.0.1",&serv_addr.sin_addr) <= 0){                                                                        
+    if(inet_pton(AF_INET,"0.0.0.0",&serv_addr.sin_addr) <= 0){                                                                        
         printf("\nInvalid address/ Address not supported \n");                                                                        
                 return -1;                                                                                                            
     }                                                                                                                                 

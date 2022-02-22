@@ -83,6 +83,7 @@ int main(int argc, char const *argv[]){
         printf("\n-conexiones restantes %d-",contador);
 
         close(new_socket);
+        contador--;
     }
     //cerramos el sockets para las conexion futura asi como envios futuros (argumento 2 SHUT_RDWR)
     if(shutdown(server_fd,2) < 0){
