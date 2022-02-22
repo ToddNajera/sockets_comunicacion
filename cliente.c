@@ -14,7 +14,7 @@ IP, PUERTOS FIJOS, MENSAJE FIJO (*practica 1)
 #include <arpa/inet.h>
 #include <unistd.h>                                                                                                                                                                                                                                   
 #include <string.h>                                                                                                                    
-#define PORT 7044                                                                                                                     
+#define PORT 6044                                                                                                                     
                                                                                                                                                                                                                                                                            
 //Socket cliente caracteristicas : TCP, IP Y PUERTO FIJO                                                                                                                                                                                            
 int main(int argc, char const *argv[]){                                                                                               
@@ -27,8 +27,7 @@ int main(int argc, char const *argv[]){
                                                                                                                                       
     //Creando descriptor del socket                                                                                                   
     printf("\nIniciando Socket");                                                                                                     
-    if( (sock = socket(AF_INET, SOCK_STREAM,0)) <= 0){                                                                                
-                                                                                                                                      
+    if( (sock = socket(AF_INET, SOCK_STREAM,0)) < 0){                                                                                                                                                                     
         printf("\n socket faild conection");                                                                                          
         return -1;                                                                                                                    
     }                                                                                                                                 
@@ -38,15 +37,17 @@ int main(int argc, char const *argv[]){
                                                                                                                                       
                                                                                                                                       
     //Convertimos la IPv4 o IPv6 de texto a binario para ser procesada                                                                
-    if(inet_pton(AF_INET,"10.0.0.1",&serv_addr.sin_addr) < 0){                                                                        
+    if(inet_pton(AF_INET,"10.0.0.1",&serv_addr.sin_addr) <= 0){                                                                        
         printf("\nInvalid address/ Address not supported \n");                                                                        
                 return -1;                                                                                                            
     }                                                                                                                                 
                                                                                                                                       
     printf("\nConfigurando Socket");                                                                                                  
-    //Una vez creado el socket tratamos de lograr la conexion                                                                         
-    if( connect(sock, (struct sockaddr *)&serv_addr,sizeof(serv_addr) ) < 0){                                                         
-        printf("\n Connection failed");                                                                                               
+    //Una vez creado el socket tratamos de lograr la conexion
+    int i = 0;                                                                         
+    if( i = connect(sock, (struct sockaddr *)&serv_addr,sizeof(serv_addr) ) < 0){                                                         
+        printf("\nConnection failed");   
+        printf("\n %d",i);                                                                                            
         return -1;                                                                                                                    
     }                                                                                                                                 
                                                                                                                                       
