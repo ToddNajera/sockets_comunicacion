@@ -72,11 +72,10 @@ int main(int argc, char const *argv[]){
 	}
     printf("\nConexion exitosa");
     valread = read( new_socket , buffer, 1024); //se lee el mensaje del socket cliente
-	printf("%s\n",buffer );
+	printf("\n%s",buffer );
 	send(new_socket , mensaje , strlen(mensaje) , 0 );
-	printf("-message sent-\n");
-	printf("%d\n",sizeof(long int));
-    printf("-shutdown socket-\n");
+	printf("\n-message sent-");
+    printf("\n-shutdown socket-");
 
     //cerramos el sockets para las conexion futura asi como envios futuros (argumento 2 SHUT_RDWR)
     if(shutdown(server_fd,2) < 0){

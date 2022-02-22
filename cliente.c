@@ -20,9 +20,9 @@ IP, PUERTOS FIJOS, MENSAJE FIJO (*practica 1)
 int main(int argc, char const *argv[]){                                                                                               
     //Declaramos las variables para la configuracion del socket                                                                       
     int sock = 0, valread;                                                                                                            
-        struct sockaddr_in serv_addr; //renombramos la estructura sockaddr_in -> serv_addr                                            
-        char *mensaje = "Hello from client";                                                                                           
-        char buffer[1024] = {0};                                                                                                      
+    struct sockaddr_in serv_addr; //renombramos la estructura sockaddr_in -> serv_addr                                            
+    char *mensaje = "Hello from client";                                                                                           
+    char buffer[1024] = {0};                                                                                                      
                                                                                                                                       
                                                                                                                                       
     //Creando descriptor del socket                                                                                                   
@@ -54,9 +54,9 @@ int main(int argc, char const *argv[]){
     printf("\nIniciando Conexion");                                                                                                   
     //proceso de comunicacion                                                                                                                                                                                                                                              
     send(sock , mensaje , strlen(mensaje) , 0 );                                                                                      
-        printf("-message sent-\n");                                                                                                                                                                                                                                        
-        valread = read( sock , buffer, 1024);                                                                                                                                                                                                                        
-        printf("%s\n",buffer );                                                                                                                                                                                                                                     
+    printf("-message sent-\n");                                                                                                                                                                                                                                        
+    valread = read( sock , buffer, 1024);                                                                                                                                                                                                                        
+    printf("%s\n",buffer );                                                                                                                                                                                                                                     
     //cerramos el sockets para las conexion futura asi como envios futuros (argumento 2 SHUT_RDWR)                                                                                                                                                 
     if(shutdown(sock,2) < 0){                                                                                                                                                                                                                                         
         printf("shutdown failed");                                                                                                                                                                                                                                
