@@ -7,13 +7,15 @@ Porras Najera Miguel Angel
 -cliente.c
 Es un socket orientado a la comunicacion utilizando el protcolo tcp para lograr la conexion
 este puede enviar un mensaje y recibe uno
-IP, PUERTOS FIJOS, MENSAJE FIJO (*practica 1)
+
+IP, PUERTOS FIJOS, MENSAJE POR PARAMETROS (*practica 4)
 */
-#include <stdio.h>
 #include <sys/socket.h>
-#include <arpa/inet.h>
-#include <unistd.h>                                                                                                                                                                                                                                   
-#include <string.h>                                                                                                                    
+#include <netinet/in.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/select.h>                                                                                                                    
 #define PORT 6044                                                                                                                     
                                                                                                                                                                                                                                                                            
 //Socket cliente caracteristicas : TCP, IP Y PUERTO FIJO                                                                                                                                                                                            
@@ -22,10 +24,24 @@ int main(int argc, char const *argv[]){
     int sock = 0, valread;                                                                                                            
     struct sockaddr_in serv_addr; //renombramos la estructura sockaddr_in -> serv_addr                                            
     char *mensaje = "Hello from client";                                                                                           
-    char buffer[1024] = {0};                                                                                                      
+    char buffer[1024] = {0};   
+    //variables para la lectura de enteros y el operando a usar
+    int a, b;
+    char *op;                                                                                                   
                                                                                                                                       
-                                                                                                                                      
+
+    if ( argc != 4) {
+        fprintf(stderr,"\nSe requiere especificar el puerto a usar - %s\n", argv[0]);
+        return 1;
+    }
+    a = atoi(argv[1]);
+    b = atoi(argv[2]);
+    op = argv[3];
+
+    printf("\n La operacion a realizar es %d %c %d",a,b,op);
+
     //Creando descriptor del socket                                                                                                   
+    /*
     printf("\nIniciando Socket");                                                                                                     
     if( (sock = socket(AF_INET, SOCK_STREAM,0)) < 0){                                                                                                                                                                     
         printf("\n socket faild conection");                                                                                          
@@ -64,5 +80,6 @@ int main(int argc, char const *argv[]){
     }                                                                                                                                 
 
     printf("\n");                                                                                                                                                                                                                                                 
-    return 0;                                                                                                                     
+    return 0;   
+    */                                                                                                                  
 } 
